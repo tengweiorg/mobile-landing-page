@@ -1,17 +1,16 @@
-import { v as decryptString, w as createSlotValueFromString, x as isAstroComponentFactory, a as renderComponent, r as renderTemplate, R as ROUTE_TYPE_HEADER, y as REROUTE_DIRECTIVE_HEADER, A as AstroError, z as i18nNoLocaleFoundInPath, B as ResponseSentError, C as MiddlewareNoDataOrNextCalled, G as MiddlewareNotAResponse, H as originPathnameSymbol, J as RewriteWithBodyUsed, K as GetStaticPathsRequired, O as InvalidGetStaticPathsReturn, P as InvalidGetStaticPathsEntry, Q as GetStaticPathsExpectedParams, S as GetStaticPathsInvalidRouteParam, T as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, V as NoMatchingStaticPathFound, W as PrerenderDynamicEndpointPathCollide, X as ReservedSlotName, Y as renderSlotToString, Z as renderJSX, _ as chunkToString, $ as isRenderInstruction, a0 as ForbiddenRewrite, a1 as SessionStorageSaveError, a2 as SessionStorageInitError, a3 as ASTRO_VERSION, a4 as LocalsReassigned, a5 as PrerenderClientAddressNotAvailable, a6 as clientAddressSymbol, a7 as ClientAddressNotAvailable, a8 as StaticClientAddressNotAvailable, a9 as AstroResponseHeadersReassigned, aa as responseSentSymbol$1, ab as renderPage, ac as REWRITE_DIRECTIVE_HEADER_KEY, ad as REWRITE_DIRECTIVE_HEADER_VALUE, ae as renderEndpoint, af as LocalsNotAnObject, ag as REROUTABLE_STATUS_CODES } from './astro/server_DLQ9An-E.mjs';
+import { v as decryptString, w as createSlotValueFromString, x as isAstroComponentFactory, a as renderComponent, r as renderTemplate, R as ROUTE_TYPE_HEADER, y as REROUTE_DIRECTIVE_HEADER, A as AstroError, z as i18nNoLocaleFoundInPath, B as ResponseSentError, C as MiddlewareNoDataOrNextCalled, G as MiddlewareNotAResponse, H as originPathnameSymbol, J as RewriteWithBodyUsed, K as GetStaticPathsRequired, O as InvalidGetStaticPathsReturn, P as InvalidGetStaticPathsEntry, Q as GetStaticPathsExpectedParams, S as GetStaticPathsInvalidRouteParam, T as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, V as NoMatchingStaticPathFound, W as PrerenderDynamicEndpointPathCollide, X as ReservedSlotName, Y as renderSlotToString, Z as renderJSX, _ as chunkToString, $ as isRenderInstruction, a0 as ForbiddenRewrite, a1 as SessionStorageSaveError, a2 as SessionStorageInitError, a3 as ASTRO_VERSION, a4 as LocalsReassigned, a5 as PrerenderClientAddressNotAvailable, a6 as clientAddressSymbol, a7 as ClientAddressNotAvailable, a8 as StaticClientAddressNotAvailable, a9 as AstroResponseHeadersReassigned, aa as responseSentSymbol$1, ab as renderPage, ac as REWRITE_DIRECTIVE_HEADER_KEY, ad as REWRITE_DIRECTIVE_HEADER_VALUE, ae as renderEndpoint, af as LocalsNotAnObject, ag as REROUTABLE_STATUS_CODES } from './astro/server_BTCNBJOT.mjs';
 import { bold, red, yellow, dim, blue } from 'kleur/colors';
 import 'clsx';
 import { serialize, parse } from 'cookie';
-import { g as getActionQueryString, d as deserializeActionResult, D as DEFAULT_404_ROUTE, a as default404Instance, N as NOOP_MIDDLEWARE_FN, e as ensure404Route } from './astro-designed-error-pages_BC-gzRZC.mjs';
+import { g as getActionQueryString, d as deserializeActionResult, D as DEFAULT_404_ROUTE, a as default404Instance, N as NOOP_MIDDLEWARE_FN, e as ensure404Route } from './astro-designed-error-pages_4h7_6aAb.mjs';
 import 'es-module-lexer';
 import buffer from 'node:buffer';
 import crypto$1 from 'node:crypto';
 import { Http2ServerResponse } from 'node:http2';
-import { a as appendForwardSlash, j as joinPaths, r as removeTrailingForwardSlash, t as trimSlashes, f as fileExtension, s as slash, p as prependForwardSlash, c as collapseDuplicateTrailingSlashes, h as hasFileExtension } from './path_BuZodYwm.mjs';
+import { a as appendForwardSlash, j as joinPaths, r as removeTrailingForwardSlash, p as prependForwardSlash, t as trimSlashes, f as fileExtension, s as slash, c as collapseDuplicateTrailingSlashes, h as hasFileExtension } from './path_BuZodYwm.mjs';
 import { unflatten as unflatten$1, stringify as stringify$1 } from 'devalue';
 import { createStorage, builtinDrivers } from 'unstorage';
 import '@vercel/routing-utils';
-import 'fast-glob';
 import nodePath from 'node:path';
 
 function shouldAppendForwardSlash(trailingSlash, buildFormat) {
@@ -1068,10 +1067,18 @@ function findRouteToRewrite({
     newUrl = new URL(payload, new URL(request.url).origin);
   }
   let pathname = newUrl.pathname;
+  const shouldAppendSlash = shouldAppendForwardSlash(trailingSlash, buildFormat);
   if (base !== "/" && newUrl.pathname.startsWith(base)) {
-    pathname = shouldAppendForwardSlash(trailingSlash, buildFormat) ? appendForwardSlash(newUrl.pathname) : removeTrailingForwardSlash(newUrl.pathname);
+    pathname = shouldAppendSlash ? appendForwardSlash(newUrl.pathname) : removeTrailingForwardSlash(newUrl.pathname);
     pathname = pathname.slice(base.length);
   }
+  if (!pathname.startsWith("/") && shouldAppendSlash && newUrl.pathname.endsWith("/")) {
+    pathname = prependForwardSlash(pathname);
+  }
+  if (pathname === "/" && base !== "/" && !shouldAppendSlash) {
+    pathname = "";
+  }
+  newUrl.pathname = joinPaths(...[base, pathname].filter(Boolean));
   const decodedPathname = decodeURI(pathname);
   let foundRoute;
   for (const route of routes) {
@@ -2358,6 +2365,7 @@ class RenderContext {
     };
     const result = {
       base: manifest.base,
+      userAssetsBase: manifest.userAssetsBase,
       cancelled: false,
       clientDirectives,
       inlinedScripts,

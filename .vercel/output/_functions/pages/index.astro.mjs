@@ -1,7 +1,7 @@
 /* empty css                                   */
-import { c as createComponent, a as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_DLQ9An-E.mjs';
+import { c as createComponent, a as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BTCNBJOT.mjs';
 import 'kleur/colors';
-import { $ as $$Layout, a as appData } from '../chunks/Layout_D11ZhMY8.mjs';
+import { $ as $$Layout, a as appData } from '../chunks/Layout_CpvxoaoK.mjs';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import { useState, useEffect, useCallback } from 'react';

@@ -1,8 +1,8 @@
 /* empty css                                   */
-import { c as createComponent, a as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_DLQ9An-E.mjs';
+import { c as createComponent, a as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BTCNBJOT.mjs';
 import 'kleur/colors';
 import { FiArrowLeft } from 'react-icons/fi';
-import { $ as $$Layout } from '../chunks/Layout_D11ZhMY8.mjs';
+import { $ as $$Layout } from '../chunks/Layout_CpvxoaoK.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$404 = createComponent(($$result, $$props, $$slots) => {
