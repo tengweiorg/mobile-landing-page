@@ -93,7 +93,3 @@ export interface DeviceToggleProps {
 	activeDevice: "iphone" | "ipad";
 	onToggle: (device: "iphone" | "ipad") => void;
 }
-
-export interface GithubCornerProps {
-	href: string;
-}
