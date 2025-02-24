@@ -7,9 +7,9 @@ import {
 } from "react-icons/ri";
 
 export const appData: AppData = {
-	title: "Your App Name",
+	title: "FREE 记账",
 	description:
-		"Here you can write a brief description of your application. Tell users about its main features and benefits in 1-2 sentences.",
+		"免费记账，轻松管理你的财务，随时随地查看收支情况，让理财变得更简单。",
 	logo: {
 		type: "iframe",
 		src: "https://api.bohd4n.me/embed/d92TevY2lQhnQnC/emoji1",
@@ -30,33 +30,33 @@ export const appData: AppData = {
 	},
 	features: [
 		{
-			title: "Main Feature",
-			description: "Describe your main feature here. What makes it special?",
+			title: "免费记账",
+			description: "免费记账，轻松管理你的财务，随时随地查看收支情况，让理财变得更简单。",
 			icon: FiStar,
 		},
 		{
-			title: "Another Feature",
-			description: "What else can your app do? Tell users about it here.",
+			title: "AI分析",
+			description: "支持AI分析，帮助你更好地理解你的财务状况。",
 			icon: FiZap,
 		},
 		{
-			title: "One More Feature",
-			description: "Add another key feature of your application here.",
+			title: "操作简单",
+			description: "简洁的操作界面，快速上手，理财更轻松。",
 			icon: FiBox,
 		},
 	],
 	faqs: [
 		{
-			question: "Question 1?",
-			answer: "Answer to question 1 goes here.",
+			question: "免费记账？",
+			answer: "是的，免费记账，轻松管理你的财务，随时随地查看收支情况，让理财变得更简单。",
 		},
 		{
-			question: "Question 2?",
-			answer: "Answer to question 2 goes here.",
+			question: "支持AI分析？",
+			answer: "是的，支持AI分析，帮助你更好地理解你的财务状况。",
 		},
 		{
-			question: "Question 3?",
-			answer: "Answer to question 3 goes here.",
+			question: "支持明细查询？",
+			answer: "是的，支持明细查询，帮助你更好地理解你的财务状况。",
 		},
 	],
 	storeLinks: {
